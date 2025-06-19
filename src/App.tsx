@@ -3,6 +3,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/DashboardPage";
 import PrivateRoute from "./routes/PrivateRoute";
+import TeamManagementPage from "./pages/TeamManagementPage";
 ;
 
 function App() {
@@ -17,6 +18,14 @@ function App() {
           element={
             <PrivateRoute>
               <DashboardPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/team-management"
+          element={
+            <PrivateRoute>
+              <TeamManagementPage />
             </PrivateRoute>
           }
         />
