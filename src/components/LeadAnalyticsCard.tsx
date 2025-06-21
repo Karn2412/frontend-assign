@@ -1,3 +1,5 @@
+import React from "react";
+
 interface LeadAnalyticsCardProps {
   label: string;
   count: number;
@@ -6,13 +8,18 @@ interface LeadAnalyticsCardProps {
 
 const LeadAnalyticsCard: React.FC<LeadAnalyticsCardProps> = ({ label, count, percent }) => {
   return (
-    <div className="col-md-3 ">
-      <div className={`border rounded p-3 text-center border-primary${label === 'No Stage' ? 'bg-light' : ''}`}>
-        <div className="small text-muted mb-1">{label}</div>
-        <hr className="text-primary"/>
-        <div className="h5 mb-1">{count}</div>
-        <div className={`small ${percent > 0 ? 'text-success' : 'text-muted'}`}>
-          {percent}%
+    <div className="w-full">
+      <div
+        className={`border rounded-xl p-1 text-center shadow-sm transition-all duration-200
+        border-blue-500 ${label === 'No Stage' ? 'bg-gray-100' : 'bg-white'}`}
+      >
+        <div className="text-sm text-gray-500 mb-1 font-medium">{label}</div>
+        <hr className="border-blue-500 mb-2" />
+        <div className="flex items-center justify-center gap-1.5">
+          <div className="text-xs font-bold text-gray-800 "><p className="text-center">{count}</p></div>
+        <div className={`text-xs font-bold  ${percent > 0 ? 'text-green-600' : 'text-gray-400'}`}>
+          <p className="text-center">{percent}%</p>
+        </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,14 @@
-import React from 'react';
+import React from "react";
+import { MdAnalytics } from "react-icons/md";
 import {
-  ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar
-} from 'recharts';
+  ResponsiveContainer,
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Bar
+} from "recharts";
 
 interface StageAnalyticsData {
   month: string;
@@ -14,28 +21,32 @@ interface StageAnalyticsProps {
 
 const StageAnalytics: React.FC<StageAnalyticsProps> = ({ data }) => {
   return (
-    <div className="col-12 col-lg-4">
-      <div className="card shadow-sm rounded-4 h-100 p-3 border-primary" style={{ backgroundColor: '#f8f9fa' }}>
-        <div className="d-flex justify-content-between align-items-center mb-3">
-          <div className="d-flex align-items-center">
-            <div className="bg-info rounded-circle d-flex align-items-center justify-content-center me-3" style={{ width: '40px', height: '40px' }}>
-              <i className="bi bi-bar-chart text-white"></i>
+    <div className="w-full " >
+      <div className="bg-white rounded-2xl shadow-sm p-4 border border-blue-500" style={{height:"385px"}}>
+        
+        <div className="flex justify-between items-center mb-2 flex-wrap">
+          <div className="flex items-center">
+            <div className="bg-orange-400 text-white rounded-full w-10 h-10 flex items-center justify-center mr-3">
+            <MdAnalytics className="text-white text-lg" />
             </div>
-            <h5 className="mb-0 fw-semibold">Stage Analytics</h5>
+            <h5 className="font-semibold text-lg">Stage Analytics</h5>
           </div>
         </div>
 
-        <div className="d-flex gap-2 mb-3">
-          <button className="btn btn-outline-primary btn-sm">Select Stage</button>
-          <button className="btn btn-outline-secondary btn-sm">All Staff</button>
+        {/* Filters */}
+        <div className="flex flex-wrap gap-2 mb-1">
+          <button className="border border-blue-500 text-blue-500 px-3 py-1 text-sm rounded-full hover:bg-blue-50">Select Stage</button>
+          <button className="border border-gray-400 text-gray-700 px-3 py-1 text-sm rounded-full hover:bg-gray-50">All Staff</button>
         </div>
 
-        <div className="text-end mb-2">
-          <small className="text-muted">MTD | YTD</small>
-          <div className="fw-bold">Total Leads: {data.reduce((acc, item) => acc + item.leads, 0)}</div>
+        {/* Total Leads */}
+        <div className="text-right mb-2">
+          <small className="text-gray-500 font-medium">MTD | YTD</small>
+          <div className="font-bold text-lg text-gray-800">Total Leads: {data.reduce((acc, item) => acc + item.leads, 0)}</div>
         </div>
 
-        <div style={{ height: '250px' }}>
+        {/* Bar Chart */}
+        <div className="h-50">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -47,11 +58,10 @@ const StageAnalytics: React.FC<StageAnalyticsProps> = ({ data }) => {
           </ResponsiveContainer>
         </div>
 
-        <div className="text-center mt-3">
-          <div className="d-flex align-items-center justify-content-center">
-            <div className="bg-warning rounded-circle me-2" style={{ width: '12px', height: '12px' }}></div>
-            <small>Total Leads</small>
-          </div>
+        {/* Legend */}
+        <div className="flex items-center justify-center mt-1">
+          <div className="bg-yellow-400 rounded-full w-3 h-3 mr-2"></div>
+          <small className="text-gray-600">Total Leads</small>
         </div>
       </div>
     </div>

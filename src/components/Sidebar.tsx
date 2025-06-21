@@ -1,48 +1,62 @@
 import { NavLink } from "react-router-dom";
+import { 
+  MdDashboard, 
+  MdRefresh, 
+  MdPeople, 
+  MdSchool, 
+  MdCreditCard, 
+  MdHeadset, 
+  MdSettings, 
+  MdBarChart, 
+  MdSwapHoriz, 
+  MdMessage, 
+  MdExtension, 
+  MdBuild, 
+  MdAssignment,
+  MdHome 
+} from "react-icons/md";
 
 const Sidebar = ({ closeSidebar }: { closeSidebar?: () => void }) => {
   const navItems = [
-    { path: "/dashboard", label: "Dashboard", icon: "bi-speedometer2" },
-    { path: "/follow-ups", label: "Follow Ups", icon: "bi-arrow-repeat", badge: "1431" },
-    { path: "/team-management", label: "Team Management", icon: "bi-people" },
-    { path: "/student-management", label: "Student Management", icon: "bi-mortarboard" },
-    { path: "/billing", label: "Billing", icon: "bi-receipt" },
-    { path: "/service", label: "Service", icon: "bi-gear" },
-    { path: "/settings", label: "Settings", icon: "bi-gear-fill" },
-    { path: "/reports", label: "Reports", icon: "bi-bar-chart" },
-    { path: "/migration", label: "Migration", icon: "bi-arrow-left-right" },
-    { path: "/whatsapp", label: "Whatsapp", icon: "bi-whatsapp" },
-    { path: "/integrations", label: "Integrations", icon: "bi-puzzle" },
-    { path: "/tools", label: "Tools", icon: "bi-tools" },
-    { path: "/audit-logs", label: "Audit Logs", icon: "bi-journal-text" },
+    { path: "/dashboard", label: "Dashboard", icon: MdDashboard },
+    { path: "/follow-ups", label: "Follow Ups", icon: MdRefresh, badge: "1431" },
+    { path: "/team-management", label: "Team Management", icon: MdPeople },
+    { path: "/student-management", label: "Student Management", icon: MdSchool },
+    { path: "/billing", label: "Billing", icon: MdCreditCard },
+    { path: "/service", label: "Service", icon: MdHeadset },
+    { path: "/settings", label: "Settings", icon: MdSettings },
+    { path: "/reports", label: "Reports", icon: MdBarChart },
+    { path: "/migration", label: "Migration", icon: MdSwapHoriz },
+    { path: "/whatsapp", label: "Whatsapp", icon: MdMessage },
+    { path: "/integrations", label: "Integrations", icon: MdExtension },
+    { path: "/tools", label: "Tools", icon: MdBuild },
+    { path: "/audit-logs", label: "Audit Logs", icon: MdAssignment },
   ];
 
   return (
-    <div
-      className="d-flex flex-column vh-100 bg-white"
-      style={{ width: "280px" }}
-    >
+    <div className="flex flex-col h-screen bg-gray-200 w-[280px] shadow-sm border-gray-500 rounded-2xl" style={{height:"800px"}}>
       {/* Nav Links */}
-      <div className="flex-grow-1 py-4">
-        <nav className="d-flex flex-column px-3 gap-1">
+      <div className="flex-grow overflow-y-auto mt-2">
+        <nav className="flex flex-col gap-1 px-3 py-4">
           {navItems.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
               onClick={closeSidebar}
               className={({ isActive }) =>
-                `d-flex align-items-center justify-content-between px-3 py-2 rounded-pill text-decoration-none ${
-                  isActive ? "bg-primary text-white shadow-sm" : "text-dark hover-bg"
+                `flex items-center justify-between px-4 py-2 rounded-full no-underline text-sm transition-all duration-200 ${
+                  isActive
+                    ? "bg-indigo-500 text-white shadow"
+                    : "text-gray-700 hover:bg-gray-100"
                 }`
               }
-              style={{ fontSize: "14px", transition: "all 0.2s ease" }}
             >
-              <div className="d-flex align-items-center">
-                <i className={`bi ${item.icon} me-3`} style={{ fontSize: "16px", width: "20px" }}></i>
+              <div className="flex items-center">
+                <item.icon className="text-base mr-3 w-5 h-5" />
                 <span>{item.label}</span>
               </div>
               {item.badge && (
-                <span className="badge bg-success rounded-pill" style={{ fontSize: "11px" }}>
+                <span className="bg-green-600 text-white text-[11px] px-2 py-0.5 rounded-full">
                   {item.badge}
                 </span>
               )}
@@ -52,15 +66,14 @@ const Sidebar = ({ closeSidebar }: { closeSidebar?: () => void }) => {
       </div>
 
       {/* Footer */}
-      <div className="p-3 border-top">
+      <div className="p-4 border-t border-gray-200">
         <NavLink
           to="/dashboard"
           onClick={closeSidebar}
-          className="d-flex align-items-center text-decoration-none text-muted px-3 py-2 rounded-pill"
-          style={{ fontSize: "14px" }}
+          className="flex items-center text-sm text-gray-500 no-underline px-3 py-2 rounded-full hover:bg-gray-100"
         >
-          <i className="bi bi-house me-3" style={{ fontSize: "16px", width: "20px" }}></i>
-          <span>Home / Dashboard</span>
+          <MdHome className="text-base mr-3 w-5 h-5" />
+          <span>Back to Dashboard</span>
         </NavLink>
       </div>
     </div>

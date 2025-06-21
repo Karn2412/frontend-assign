@@ -7,11 +7,12 @@ const data = [
 ];
 
 const ConnectionRatioChart: React.FC = () => (
-  <div style={{ flex: "1 1 30%" }}>
-    <div className="card h-100 border-primary">
-      <div className="card-body">
-        <h6 className="card-title text-muted mb-3">Connection Ratio</h6>
-        <div style={{ height: '150px' }}>
+  <div className="flex-[1_1_30%]">
+    <div className="h-full border border-blue-500 rounded-xl shadow-sm bg-white">
+      <div className="p-4">
+        <h6 className="text-sm text-gray-600 font-medium mb-3">Connection Ratio</h6>
+
+        <div className="h-[150px]">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie data={data} cx="50%" cy="50%" outerRadius={70} dataKey="value">
@@ -22,14 +23,16 @@ const ConnectionRatioChart: React.FC = () => (
             </PieChart>
           </ResponsiveContainer>
         </div>
-        <div className="d-flex justify-content-between mt-2">
-          <div className="d-flex align-items-center">
-            <div className="bg-success rounded-circle me-2" style={{ width: '12px', height: '12px' }}></div>
-            <small>Connected</small>
+
+        {/* Legends */}
+        <div className="flex justify-between mt-3 text-sm">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-[#1791d2] rounded-full"></div>
+            <span className="text-gray-700">Connected</span>
           </div>
-          <div className="d-flex align-items-center">
-            <div className="bg-danger rounded-circle me-2" style={{ width: '12px', height: '12px' }}></div>
-            <small>Not Connected</small>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-[#e23c3c] rounded-full"></div>
+            <span className="text-gray-700">Not Connected</span>
           </div>
         </div>
       </div>

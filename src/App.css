@@ -1,3 +1,8 @@
+:root{
+  --lpurple:hsl(229.77deg 95.65% 81.96%);
+  --lblue1:hsl(210deg 9.09% 95.69%);
+}
+
 .nav-link:hover {
   background-color: #e9ecef;
   border-radius: 5px;
